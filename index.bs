@@ -4,40 +4,74 @@ Shortname: amira
 Level: 1
 Status: w3c/CG-DRAFT
 Group: Credentials Community Group
+Markup Shorthands: css no, markdown yes
 URL: https://w3c-ccg.github.io/amira/
 Editor: Joe Andrieu, Legendary Requirements http://legendaryrequirements.com/, joe@legreq.com
-Author: Christopher Allen, Blockchain Commons https://www.blockchaincommons.com/, ChristopherA@LifeWithAlacrity.com, http://www.lifewithalacrity.com/
-Author: Shannon Appelcline, Skotos Tech, shannona@skotos.net
-Author: Lyre Calliope, Securing Change, lyre.calliope@gmail.com, http://twitter.com/captaincalliope
-Author: Toni Lane Casserly, Cultu.re / CoinTelegraph, tlc@cultu.re, http://www.twitter.com/tonilanec
-Author: Tim Chen, Coding Dojo, tchen@codingdojo.com
-Author: David Fields, PTB Ventures, dave@ptbvc.com
-Author: Michael Haley, AlphaPoint, michael@alphapoint.com
-Author: Shireen Mitchell, Stop Online Violence Against Women, founder@stoponlinevaw.com>
-Author: Heather Vescent, The Purple Tornado https://thepurpletornado.com, puissant@heathervescent.com
-Author: Kaliya “Identity Woman” Young, @identitywoman, kaliya@identitywoman.net
+Editor: Christopher Allen, Blockchain Commons https://www.blockchaincommons.com/, ChristopherA@LifeWithAlacrity.com, http://www.lifewithalacrity.com/
+Editor: Shannon Appelcline, Skotos Tech, shannona@skotos.net
+Editor: Lyre Calliope, Securing Change, lyre.calliope@gmail.com, http://twitter.com/captaincalliope
+Editor: Toni Lane Casserly, Cultu.re / CoinTelegraph, tlc@cultu.re, http://www.twitter.com/tonilanec
+Editor: Tim Chen, Coding Dojo, tchen@codingdojo.com
+Editor: David Fields, PTB Ventures, dave@ptbvc.com
+Editor: Michael Haley, AlphaPoint, michael@alphapoint.com
+Editor: Shireen Mitchell, Stop Online Violence Against Women, founder@stoponlinevaw.com>
+Editor: Heather Vescent, The Purple Tornado https://thepurpletornado.com, puissant@heathervescent.com
+Editor: Kaliya “Identity Woman” Young, @identitywoman, kaliya@identitywoman.net
 
 
-Abstract: The Bitcoin Reference DID method specification conforms to the requirements specified in the <a href="https://w3c-ccg.github.io/did-spec/">DID specification</a> currently published by the W3C Credentials Community Group. For more information about DIDs and DID method specifications, please see the <a href="https://github.com/WebOfTrustInfo/rwot7/blob/master/topics-and-advance-readings/did-primer.md">DID Primer</a>.
+Abstract: This paper began as a collaborative project at the fifth Rebooting the Web of Trust [[RWOT]] workshop, held in Cambridge MA in October 2017. We reinterpret Christopher Allen’s Rebooting the Web of Trust user story [[RWOT-USER-STORY]] through the lens of the Information Lifecycle Engagement Model (described in [[#appa]]). We present a human-centric illustration of an individual’s experience in a self-sovereign, decentralized realization of the Web of Trust as originally conceived by Phil Zimmerman for PGP [[WEB-OF-TRUST]].
 
-With special thanks to Pat McBennett and Raghav Chawla for their
-contributions.
+
+</pre>
+
+
+<pre class="biblio">
+{
+    "RWOT": {
+        "href": "http://www.weboftrust.info",
+        "title": "http://www.weboftrust.info",
+        "status": "unofficial",
+        "publisher": "Rebooting the Web of Trust"
+    },
+    "RWOT-USER-STORY": {
+        "authors": [ "Christopher Allen", "Shannon Appelcline" ],
+        "href": "https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-fall2017/blob/master/topics-and-advance-readings/RWOT-User-Story.md",
+        "title": "Rebooting Web of Trust User Story & Tech Concept",
+        "status": "unofficial",
+        "publisher": "Rebooting the Web of Trust"
+    },
+    "WEB-OF-TRUST": {
+        "href": "https://en.wikipedia.org/wiki/Web_of_trust",
+        "title": "Web of Trust",
+        "status": "unofficial",
+        "publisher": "Wikipedia"
+    },
+    "CUST-SUPP-ENG": {
+        "authors": [ "Joe Andrieu", "Ian Henderson" ],
+        "href": "http://kantarainitiative.org/confluence/display/infosharing/Customer-Supplier+Engagement+Model+Quick+Starter",
+        "title": "Customer Supplier Engagement Model Quick Starter",
+        "status": "unofficial",
+        "publisher": "Kantara Initiative"
+    },
+    "CCTV": {
+        "title": "Cambridge Community Television",
+        "href": "https://www.cctvcambridge.org/about"
+    },
+    "DID-PRIMER": {
+        "href": "https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-fall2017/blob/master/topics-and-advance-readings/did-primer.md",
+        "title": "DID Primer",
+        "status": "unofficial",
+        "publisher": "Rebooting the Web of Trust"
+    }
+}
+
+
 
 </pre>
 
 
 Introduction {#intro}
 =====================
-
-
-This paper began as a collaborative project at the fifth Rebooting the
-Web of Trust\[[1](#fn-1)\] workshop, held in Cambridge MA in October 2017. We
-reinterpret Christopher Allen’s Rebooting the Web of Trust user
-story,\[[2](#fn-2)\] through the lens of the Information Lifecycle Engagement
-Model (described in Appendix A). We present a human-centric illustration
-of an individual’s experience in a self-sovereign, decentralized
-realization of the Web of Trust as originally conceived by Phil
-Zimmerman for PGP.\[[3](#fn-3)\]
 
 In our scenario, Amira is a successful programmer working in Boston at a
 prestigious multi-national bank. Outside of working hours, Amira wants
@@ -46,6 +80,9 @@ advice of her friend Charlene, Amira joins RISK, a self-sovereign
 reputation network that connects developers with projects while
 protecting participants’ anonymity, building reputation, and sending &
 receiving secure payments.
+
+Special thanks to Pat McBennett and Raghav Chawla for their
+contributions.
 
 Information Lifecycle Engagement Model {#lifecycle}
 ===================================================
@@ -57,9 +94,8 @@ system. The model intentionally limits our focus to the connected
 experience of a single human protagonist and the people they engage
 along the way, in one or more paragraphs about interactions in each of
 the 15 stages. The Information Lifecycle Engagement Model is based on
-the work of Joe Andrieu and Ian Henderson from [**The Customer-Supplier
-Engagement Model Quick
-Starter**](http://kantarainitiative.org/confluence/display/infosharing/Customer-Supplier+Engagement+Model+Quick+Starter)\[[4](#fn-4)\],
+the work of Joe Andrieu and Ian Henderson from The Customer-Supplier
+Engagement Model Quick Starter [[CUST-SUPP-ENG]],
 which uses a 12-stage model to illustrate how personal data stores can
 interact with CRM systems throughout the customer-supplier lifecycle.
 The model doesn’t attempt to define all the requirements or
@@ -95,22 +131,11 @@ Participants {#participants}
 Throughout Amira’s experience, different individuals create and query
 information in RISK.
 
-> **Amira** (**BWHacker)** — The main actor in our model, Amira has a
-> politically tense background. She wants to use her programming skills
-> to positively impact the lives of oppressed people around the world.
->
-> **Ben** (**BigBen44) —** A manager at a women’s services non-profit.
-> Ben is looking to connect with developers to build an app that helps
-> women in difficult situations.
->
-> **Charlene** (**CharlieOne) —** Amira’s friend and fellow developer.
-> She knows Ben indirectly through the RISK Web of Trust. She helps
-> Amira get started with RISK.
->
-> **Elias** — A mercenary working for the Syrian Hacker Army.
->
-> **Firefly** — A developer who becomes Amira’s successor as an app
-> maintainer.
+- **Amira** (**BWHacker**) — The main actor in our model, Amira has a politically tense background. She wants to use her programming skills to positively impact the lives of oppressed people around the world.
+- **Ben** (**BigBen44**) - A manager at a women’s services non-profit. Ben is looking to connect with developers to build an app that helps women in difficult situations.
+- **Charlene** (**CharlieOne**) - Amira’s friend and fellow developer. She knows Ben indirectly through the RISK Web of Trust. She helps Amira get started with RISK.
+- **Elias** — A mercenary working for the Syrian Hacker Army.
+- **Firefly** — A developer who becomes Amira’s successor as an app maintainer.
 
 Services {#services}
 ====================
@@ -118,63 +143,33 @@ Services {#services}
 RISK depends on, and is partially constituted by a number of
 **decentralized** services.
 
--   **anonymous Internet** — support for private communication over
-    the Internet.
-
--   **identifiers** — self-sovereign, pseudo-anonymous sources of
-    cryptographic authority. DIDs, etc.
-
--   **name discovery** —ability to use an identifier to look up a unique
-    name or address within a community.
-
--   **web of trust reputation database** — non-hierarchical sources for
-    reputation information (claims and evidence) about people within
-    a community.
-
--   **status database** — non-hierarchical sources of revocation and
-    other status information for identifiers, names, and reputation.
-
--   **community** — synchronous and asynchronous discussions and
-    documents for a group of people.
-
--   **source code repository** — location for developers to collaborate
-    on software.
-
--   **contract** — method for multiple parties to securely contract
-    services with each other.
-
--   **payment** — settlement between parties.
-
--   **app marketplace** — repository for people to be download and
-    install software created by developers.
+- **anonymous Internet** — support for private communication over the Internet.
+- **identifiers** — self-sovereign, pseudo-anonymous sources of cryptographic authority. DIDs, etc.
+- **name discovery** —ability to use an identifier to look up a unique name or address within a community.
+- **web of trust reputation database** — non-hierarchical sources for reputation information (claims and evidence) about people within a community.
+- **status database** — non-hierarchical sources of revocation and other status information for identifiers, names, and reputation.
+- **community** — synchronous and asynchronous discussions and documents for a group of people.
+- **source code repository** — location for developers to collaborate on software.
+- **contract** — method for multiple parties to securely contract services with each other.
+- **payment** — settlement between parties.
+- **app marketplace** — repository for people to be download and install software created by developers.
 
 Assumptions {#assumptions}
 ==========================
 
--   All parties are users of computer and internet technology; most have
-    above-average level of technical sophistication including
-    development skills.
+- All parties are users of computer and internet technology; most have above-average level of technical sophistication including development skills.
+- The Syrian Army is actively monitoring “enemy” technology and technologists and engaging in attacks against enemy technology.
+- Amira and Charlene have an existing relationship; Charlene is willing to vouch for Amira.
+- Charlene has a mobile application for RISK installed and configured on her mobile phone.
+- Decentralized developer systems (e.g., git) are easily available and accessible.
+- Amira uses multiple security technologies and techniques to protect her privacy.
+- Amira is not monitoring changes to her account while on vacation.
 
--   The Syrian Army is actively monitoring “enemy” technology and
-    technologists and engaging in attacks against enemy technology.
 
--   Amira and Charlene have an existing relationship; Charlene is
-    willing to vouch for Amira.
+Stage 1 - Pre-contact {#stage1}
+===============================
 
--   Charlene has a mobile application for RISK installed and configured
-    on her mobile phone.
-
--   Decentralized developer systems (e.g., git) are easily available
-    and accessible.
-
--   Amira uses multiple security technologies and techniques to protect
-    her privacy.
-
--   Amira is not monitoring changes to her account while on vacation.
-
-**Stage 1 — Pre-contact**
-
-***Parties engage in activities that lead to contact.***
+**Parties engage in activities that lead to contact.**
 
 Amira escaped life in Syria when she was 16. She resettled in Boston
 with an adoptive family and studied computer science in college, taking
@@ -183,7 +178,7 @@ difference in the world.
 
 One night, Amira discovers her opportunity. She sees an interview with
 Ben, the executive director of an international non-profit, on Cambridge
-Community Television\[[5](#fn-5)\], sharing his organization’s vision for
+Community Television [[CCTV]], sharing his organization’s vision for
 supporting oppressed women around the world. Ben envisions smart phones
 as the key to creating anonymous communication channels that safely and
 reliably connect women with local community services, specifically
@@ -197,10 +192,11 @@ an identifier, BigBen44, on RISK and freely shares it with contacts,
 leaders, and developers who might help his cause. This gives Amira an
 opening to reach out to Ben.
 
-**Stage 2 — Contact**
+Stage 2 — Contact {#stage2}
+===========================
 
-***Initial contact is made between the individual and an initial
-steward.***
+**Initial contact is made between the individual and an initial
+steward.**
 
 At a local professional event, Amira runs into her good friend Charlene,
 a fellow technologist with shared values. Amira discreetly asks Charlene
@@ -217,10 +213,11 @@ Charlene tells Amira she may be able to help and suggests they meet
 after the event, without the crowd of their professional peers nearby.
 Amira agrees, intrigued and hopeful.
 
-**Stage 3 — Triage**
+Stage 3 — Triage {#stage3}
+==========================
 
-***The initial steward investigates and inquires to decide the most
-appropriate direction for the individual. Negotiations may occur.***
+**The initial steward investigates and inquires to decide the most
+appropriate direction for the individual. Negotiations may occur.**
 
 To understand if RISK is a good fit for Amira, Charlene asks about her
 goals and concerns. The security features of the system require a
@@ -247,10 +244,11 @@ stakeholders to build projects that improve people’s lives, while
 simultaneously protecting the identity of those using the system.
 Charlene decides to act as an introducer for Amira.
 
-**Stage 4 — Direction**
+Stage 4 — Direction {#stage4}
+=============================
 
-***Based on triage and negotiations, both parties agree on a particular
-course of action.***
+**Based on triage and negotiations, both parties agree on a particular
+course of action.**
 
 Charlene tells Amira about RISK, explaining the culture as well as the
 underlying cryptography and consensus mechanisms that make it all work.
@@ -271,10 +269,11 @@ USB stick) to create a secure development environment while working with
 RISK. Fortunately, Amira isn’t afraid to build a Linux machine from
 scratch; she’s confident she can get the system up and running.
 
-**Stage 5 — Consent**
+Stage 5 — Consent {#stage5}
+===========================
 
-***Consent is asked and given for creating an identity record, which is
-then provisioned.***
+**Consent is asked and given for creating an identity record, which is
+then provisioned.**
 
 During their conversation, Charlene explained that RISK is a system of
 mutual, earned trust, founded on a commitment to respect individuals’
@@ -312,17 +311,18 @@ signed statement is a consent receipt. Amira stores it on her drive and
 on a backup service, then posts a hash of the receipt to RISK, recording
 the timestamp when BWHacker formally agreed to the terms.
 
-**Stage 6 — Configure**
+Stage 6 — Configure {#stage6}
+=============================
 
-***Information is shared and associated with the individual. Services
-are configured.***
+**Information is shared and associated with the individual. Services
+are configured.**
 
 Using a bootable portable drive, Amira sets up a development environment
 on her laptop. She then downloads RISK and begins working through the
 READMEs and installation directions.
 
 Amira creates a unique identifier in the form of a DID, a Decentralized
-Identifier,\[[6](#fn-6)\] on the RISK decentralized network. This binds a
+Identifier [[DID-PRIMER]] on the RISK decentralized network. This binds a
 publicly-verifiable credential to her new pseudonym, BWHacker. This
 pseudonym and the related DID will allow Amira to securely interact
 through RISK without revealing her real-world identity.
@@ -333,9 +333,10 @@ channel and Amira and Charlene confirm each other’s identity using their
 memorized phrases. Now both parties have each other’s cryptographically
 secure identifiers for ongoing correspondence.
 
-**Stage 7 — Services**
+Stage 7 — Services {#stage7}
+============================
 
-***Services are provided.***
+**Services are provided.**
 
 To bootstrap her reputation on RISK, Amira creates a Verifiable
 Credential, self-asserting her capabilities as a mobile software
@@ -379,9 +380,10 @@ payment is released. Amira and Ben then post reviews of the experience
 of working together; this is a reputational claim on each other’s RISK
 identity, confirmed by the execution of their smart contract.
 
-**Stage 8 — Enhancements**
+Stage 8 — Enhancements {#stage8}
+================================
 
-***Enhancements are offered and accepted.***
+**Enhancements are offered and accepted.**
 
 After successfully delivering BigBen44’s project and receiving a glowing
 review, Amira decides to list her profile in the RISK developer
@@ -395,9 +397,10 @@ decentralized file system and linked to her BWHacker RISK account. When
 people search RISK for developers, BWHacker’s profile will be displayed
 with her endorsements.
 
-**Stage 9 — Updates**
+Stage 9 — Updates {#stage9}
+===========================
 
-***Anticipated changes in information lead to revised records.***
+**Anticipated changes in information lead to revised records.**
 
 After the account compromise (discussed in Stage 10) and creation of the
 BWHacker2 pseudonym, Amira buys a hardware “wallet” to help isolate and
@@ -407,10 +410,11 @@ part with one generated by her new wallet. The old credentials are no
 longer valid and her identifier remains under her control through her
 new credentials.
 
-**Stage 10 — Problems/Issues**
+Stage 10 — Problems/Issues {#stage10}
+=====================================
 
-***Issues beyond the normal support interfaces arise and are
-resolved.***
+**Issues beyond the normal support interfaces arise and are
+resolved.**
 
 Elias is a mercenary hired by the Syrian Hacker Army to track down and
 hack the author of SisterSpaces — the app that Amira coded. Elias tracks
@@ -446,9 +450,10 @@ Amira generates her credentials directly, making a point to update them
 with a more secure set as soon as possible (described in Stage 9
 Updates). Amira recovers her reputational claims in Stage 13 Recovery.
 
-**Stage 11 — Maintenance**
+Stage 11 — Maintenance {#stage11}
+=================================
 
-***Software, hardware, or operations are updated and upgraded.***
+**Software, hardware, or operations are updated and upgraded.**
 
 Meanwhile, members of RISK are considering an improvement proposal
 concerning reputation claims. Originally, RISK reputations were limited
@@ -462,9 +467,10 @@ notification that there is a new reference implementation available.
 Separately, they download it and begin to use the new aggregated
 reputations.
 
-**Stage 12 — Migration**
+Stage 12 — Migration {#stage12}
+===============================
 
-***Records are moved, transformed to a new schema, input, or output.***
+**Records are moved, transformed to a new schema, input, or output.**
 
 Seeing the power of displaying her RISK reputations on her profile,
 Amira decides to move her BWHacker2 persona off RISK to CommonX, a more
@@ -478,9 +484,10 @@ author to countersign the reputational assertion in a format usable by
 CommonX. As the authors do so, the migrated reputations start to appear
 in BWHacker2’s CommonX profile.
 
-**Stage 13 — Recovery**
+Stage 13 — Recovery {#stage13}
+==============================
 
-***Lost credentials or identifiers are restored or reset.***
+**Lost credentials or identifiers are restored or reset.**
 
 Unfortunately, Elias has taken complete control over the BWHacker
 profile. There is no way for Amira to recover it, but she can recreate
@@ -497,10 +504,11 @@ updates his account to set up a maintenance contract with BWHacker2 and
 double checks that the contract with BWHacker is terminated with
 prejudice.
 
-**Stage 14 — Exit**
+Stage 14 — Exit {#stage14}
+==========================
 
-***The individual concludes their relationship with stewards in this
-lifecycle.***
+**The individual concludes their relationship with stewards in this
+lifecycle.**
 
 Amira had thought about leaving her job at the bank to work on developer
 projects full-time, but then the bank gives her an opportunity she can’t
@@ -513,10 +521,11 @@ shipped. Ben hires a new developer, Firefly, gives them write access to
 GitHub, and revokes BWHacker2’s access. To avoid future inquiries for
 development, Amira removes her BWHacker2 profile from the directory.
 
-**Stage 15 — Re-engagement**
+Stage 15 — Re-engagement {#stage15}
+===================================
 
-***The individual is invited and accepts a new opportunity to engage the
-system.***
+**The individual is invited and accepts a new opportunity to engage the
+system.**
 
 A year into the rebuild, the bank’s CIO has been replaced and Amira is
 fed up. She decides to try Firefly’s latest version of SisterSpaces.
@@ -527,14 +536,18 @@ he wants her back full time. Amira gives notice to the bank, reactivates
 her BWHacker2 profile in the directory, and steps into her dream job of
 writing socially-responsible software.
 
-**Appendix A**
-
-**Information Lifecycle Engagement Model**
+Appendix A - Information Lifecycle Engagement Model {#appa}
+===========================================================
 
 The 15-stage model presented here is an instance of an Information
 Lifecycle Engagement Framework, as illustrated below.
 
-![](images/amira-1.png)
+<figure>
+    <img src=images/amira-1.png>
+    <figcaption>
+        Information Lifecycle Engagement Framework
+    </figcaption>
+</figure>
 
 Each phase in the model presents a concise description of one or two
 interactions illustrating the phase. Rather than attempting to describe
@@ -546,10 +559,8 @@ parties and the viability of the described use. We use it to tease out
 the human requirements independent of the underlying technology.
 
 This Information Lifecycle Engagement Model is based on the work of Joe
-Andrieu and Ian Henderson from [**The Customer-Supplier Engagement Model
-Quick
-Starter**](http://kantarainitiative.org/confluence/display/infosharing/Customer-Supplier+Engagement+Model+Quick+Starter)\[[7](#fn-7)\]*.*
-We have re-interpreted and expanded the 12 phases of the
+Andrieu and Ian Henderson from The Customer-Supplier Engagement Model
+Quick Starter [[CUST-SUPP-ENG]]. We have re-interpreted and expanded the 12 phases of the
 Customer-Supplier Engagement Model for suitability to identity
 information more generally, shifting away from the commercial nature of
 the relationship. We also added Maintenance, Migration, and Recovery
@@ -561,19 +572,3 @@ given system. This can be done before a detailed specification, giving a
 coherent view of functional requirements that supports subsequent
 innovation as design and implementation details emerge.
 
-Footnotes {#footnotes}
-======================
-
-<a name="fn-1">\[1\]:</a> [*http://www.weboftrust.info/*](http://www.weboftrust.info/)
-
-<a name="fn-2">\[2\]:</a> [*https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-fall2017/blob/master/topics-and-advance-readings/RWOT-User-Story.md*](https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-fall2017/blob/master/topics-and-advance-readings/RWOT-User-Story.md)
-
-<a name="fn-3">\[3\]:</a> [*https://en.wikipedia.org/wiki/Web\_of\_trust*](https://en.wikipedia.org/wiki/Web_of_trust)
-
-<a name="fn-4">\[4\]:</a> [*http://kantarainitiative.org/confluence/display/infosharing/Customer-Supplier+Engagement+Model+Quick+Starter*](http://kantarainitiative.org/confluence/display/infosharing/Customer-Supplier+Engagement+Model+Quick+Starter)
-
-<a name="fn-5">\[5\]:</a> https://www.cctvcambridge.org/about
-
-<a name="fn-6">\[6\]:</a> https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-fall2017/blob/master/topics-and-advance-readings/did-primer.md
-
-<a name="fn-7">\[7\]:</a> [*http://kantarainitiative.org/confluence/display/infosharing/Customer-Supplier+Engagement+Model+Quick+Starter*](http://kantarainitiative.org/confluence/display/infosharing/Customer-Supplier+Engagement+Model+Quick+Starter)
